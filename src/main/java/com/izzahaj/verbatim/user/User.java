@@ -19,6 +19,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.izzahaj.verbatim.deck.Deck;
 import com.izzahaj.verbatim.topic.Topic;
 
 @Entity
@@ -40,6 +41,9 @@ public class User implements UserDetails {
 
     @OneToMany(mappedBy = "user")
     private List<Topic> topics = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Deck> decks = new ArrayList<>();
 
     public User() {}
 

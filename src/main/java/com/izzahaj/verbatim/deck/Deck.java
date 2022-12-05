@@ -1,4 +1,4 @@
-package com.izzahaj.verbatim.topic;
+package com.izzahaj.verbatim.deck;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +12,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import com.izzahaj.verbatim.deck.Deck;
+import com.izzahaj.verbatim.card.Card;
 import com.izzahaj.verbatim.user.User;
 
 @Entity
-public class Topic {
+public class Deck {
     @Id
-    @SequenceGenerator(name = "topic_sequence",
-            sequenceName = "topic_sequence",
+    @SequenceGenerator(name = "deck_sequence",
+            sequenceName = "deck_sequence",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
-            generator = "topic_sequence")
+            generator = "deck_sequence")
     private Long id;
 
     private String title;
@@ -32,10 +32,10 @@ public class Topic {
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "topic")
-    private List<Deck> decks = new ArrayList();
+    @OneToMany(mappedBy = "deck")
+    private List<Card> cards = new ArrayList();
 
-    public Topic(String title, String description, User user) {
+    public Deck(String title, String description, User user) {
         this.title = title;
         this.description = description;
         this.user = user;
